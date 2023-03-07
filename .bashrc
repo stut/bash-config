@@ -34,9 +34,9 @@ PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin"
 # TODO: remove as soon as the switch to ansible is complete
 PATH="/home/stuart/.chefdk/gem/ruby/2.6.0/bin:/opt/chefdk/embedded/bin:/usr/local/bin:$PATH"
 
-# put ~/bin on PATH if you have it
-test -d "$HOME/bin" &&
-  PATH="$HOME/bin:$PATH"
+# put ~/.bin on PATH if you have it
+test -d "$HOME/.bin" &&
+  PATH="$HOME/.bin:$PATH"
 
 # detect interactive shell
 case "$-" in
@@ -143,7 +143,7 @@ test -r ~/.bashrc_local &&
 
 export GOPATH=/home/stuart/code/go
 export GOBIN=$GOPATH/bin
-export PATH=$GOBIN:$PAT
+export PATH=$GOBIN:$PATH
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
@@ -152,7 +152,7 @@ export EDITOR="nvim"
 # condense PATH entries
 export PATH=/usr/local/php5/bin:$GOBIN:$M2_HOME/bin:$PATH
 # TODO: Remove Chef when the move to Ansible is complete.
-PATH=/usr/local/bin/:/home/stuart/.chefdk/gem/ruby/2.3.0/bin:$(puniq $PATH)
+export PATH=/usr/local/bin/:/home/stuart/.chefdk/gem/ruby/2.3.0/bin:$PATH
 MANPATH=$(puniq $MANPATH)
 
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
@@ -186,4 +186,6 @@ alias wsright="i3-msg move workspace to output right"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 alias config='/usr/bin/git --git-dir=/home/stuart/.cfg/ --work-tree=/home/stuart'
+
+export PATH=$(puniq $PATH)
 
