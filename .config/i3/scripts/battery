@@ -1,0 +1,14 @@
+#!/bin/sh
+PERCENTAGE=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "percentage" | sed 's/percentage://' | awk '{$1=$1};1')
+TIME_LEFT=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "time to empty" | sed 's/time to empty://' | awk '{$1=$1};1')
+STATE=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "state" | sed 's/state://' | awk '{$1=$1};1')
+if [ "$TIME_LEFT" != "" ]; then
+  echo "$PERCENTAGE ($TIME_LEFT)"
+else
+  if [ "$STATE" = "fully-charged" ]; then
+    echo "full"
+  else
+    echo "$PERCENTAGE"
+  fi
+fi
+
