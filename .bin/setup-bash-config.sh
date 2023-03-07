@@ -1,4 +1,5 @@
 #!/bin/bash
+# https://bitbucket.org/durdn/cfg/raw/master/.bin/install.sh
 git clone --bare git@github.com:stut/bash-config.git $HOME/.cfg
 function config {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
