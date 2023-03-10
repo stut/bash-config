@@ -133,6 +133,7 @@ alias g='grep'
 alias pg='ps wwaux | grep -v grep | grep'
 alias ssha='eval `ssh-agent` && ssh-add'
 alias e=vim
+alias se='sudo vim'
 hash nvim 2>/dev/null && alias vim=nvim
 hash bat 2>/dev/null && alias less=bat
 alias tmux="TERM=xterm-256color tmux"
@@ -172,7 +173,7 @@ function gf {
 
 alias slack="slack -s"
 
-. "$HOME/.cargo/env"
+[ -f $HOME/.cargo/env ] && source "$HOME/.cargo/env"
 
 # Hashicorp Autocompletes
 for i in consul nomad terraform vault packer waypoint boundary
