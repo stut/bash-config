@@ -7,6 +7,8 @@ test -r /etc/bashrc &&
 # git completion
 test -r /usr/share/git-core/contrib/completion/git-prompt.sh &&
       . /usr/share/git-core/contrib/completion/git-prompt.sh
+test -r /usr/share/git-core/contrib/completion/git-prompt.sh ||
+      . ~/.git-prompt.sh
 
 # notify of bg job completion immediately
 set -o notify
@@ -31,8 +33,6 @@ umask 0022
 
 # we want the various sbins on the path along with /usr/local/bin
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin"
-# TODO: remove as soon as the switch to ansible is complete
-PATH="/home/stuart/.chefdk/gem/ruby/2.6.0/bin:/opt/chefdk/embedded/bin:/usr/local/bin:$PATH"
 
 # put ~/.bin on PATH if you have it
 test -d "$HOME/.bin" &&
@@ -142,7 +142,7 @@ alias tmux="TERM=xterm-256color tmux"
 test -r ~/.bashrc_local &&
       . ~/.bashrc_local
 
-export GOPATH=/home/stuart/code/go
+export GOPATH=$HOME/code/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
 
@@ -151,9 +151,6 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export EDITOR="nvim"
 
 # condense PATH entries
-export PATH=/usr/local/php5/bin:$GOBIN:$M2_HOME/bin:$PATH
-# TODO: Remove Chef when the move to Ansible is complete.
-export PATH=/usr/local/bin/:/home/stuart/.chefdk/gem/ruby/2.3.0/bin:$PATH
 MANPATH=$(puniq $MANPATH)
 
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
@@ -186,7 +183,9 @@ alias wsright="i3-msg move workspace to output right"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-alias config='/usr/bin/git --git-dir=/home/stuart/.cfg/ --work-tree=/home/stuart'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 export PATH=$(puniq $PATH)
+
+source ~/.git-prompt.sh
 
