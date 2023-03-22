@@ -9,3 +9,8 @@ set shiftwidth=2
 set expandtab
 " turn word wrapping off
 set tw=0
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
