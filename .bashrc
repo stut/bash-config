@@ -65,25 +65,7 @@ HISTCONTROL=ignoreboth
 HISTFILESIZE=10000
 HISTSIZE=10000
 
-# ----------------------------------------------------------------------
-# PAGER / EDITOR
-# ----------------------------------------------------------------------
-
 export EDITOR="nvim"
-
-# PAGER
-if test -n "$(command -v less)" ; then
-    PAGER="bat --paging always"
-    MANPAGER="bat --paging always"
-else
-    PAGER=more
-    MANPAGER="$PAGER"
-fi
-export PAGER MANPAGER
-
-# Ack
-ACK_PAGER="$PAGER"
-ACK_PAGER_COLOR="$PAGER"
 
 # disk usage with human sizes and minimal depth
 alias du1='du -h --max-depth=1'
@@ -135,13 +117,16 @@ alias ssha='eval `ssh-agent` && ssh-add'
 alias e=vim
 alias se='sudo vim'
 hash nvim 2>/dev/null && alias vim=nvim
+hash batcat 2>/dev/null && alias bat=batcat
 hash bat 2>/dev/null && alias less=bat
+hash bat 2>/dev/null && alias cat=bat
 alias tmux="TERM=xterm-256color tmux"
 
 # bring in local bashrc
 test -r ~/.bashrc_local &&
       . ~/.bashrc_local
 
+test -r /usr/local/go/bin/go && export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/code/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
