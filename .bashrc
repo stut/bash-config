@@ -137,6 +137,7 @@ alias se='sudo vim'
 hash nvim 2>/dev/null && alias vim=nvim
 hash bat 2>/dev/null && alias less=bat
 alias tmux="TERM=xterm-256color tmux"
+alias play="cvlc --play-and-exit"
 
 # bring in local bashrc
 test -r ~/.bashrc_local &&
