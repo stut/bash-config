@@ -121,6 +121,7 @@ hash batcat 2>/dev/null && alias bat=batcat
 hash bat 2>/dev/null && alias less=bat
 hash bat 2>/dev/null && alias cat=bat
 alias tmux="TERM=xterm-256color tmux"
+alias play="cvlc --play-and-exit"
 
 # bring in local bashrc
 test -r ~/.bashrc_local &&

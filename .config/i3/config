@@ -176,9 +176,10 @@ bindsym Print exec screenshot
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 # startup
-#exec_always --no-startup-id feh --bg-scale /home/stuart/wallpaper.jpg
+exec_always --no-startup-id feh --bg-center /home/stuart/wallpaper.jpg
 exec xautolock -time 60 -locker '/home/stuart/.config/i3/scripts/lock' &
 exec_always --no-startup-id ~/bin/natural_scrolling
 exec_always --no-startup-id setxkbmap -layout us
 exec_always --no-startup-id /bin/albert
+exec_always --no-startup-id xinput set-prop 13 324 1
 
