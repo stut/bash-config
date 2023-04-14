@@ -64,7 +64,7 @@ _LOW_ACTION=${_LOW_ACTION:-"notify"}
 _NOTIFY_PROGRAM=${_NOTIFY_PROGRAM:-"notify-send"}
 
 # The duration, in milliseconds, for the notification to appear on screen.
-_NOTIFY_EXPIRES="1500"
+_NOTIFY_EXPIRES=$(_NOTIFY_EXPIRES:-"1500")
 
 # Minimum time in seconds between notifications to prevent spam.
 _NOTIFY_THROTTLE=${_NOTIFY_THROTTLE:-120}
