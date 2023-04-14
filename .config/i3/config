@@ -168,14 +168,17 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id /home/stuart/.config/i3/scripts/brightness-up
+bindsym XF86MonBrightnessDown exec --no-startup-id /home/stuart/.config/i3/scripts/brightness-down
 
 bindsym $mod+Shift+f exec google-chrome-stable
 bindsym Print exec screenshot
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 # startup
+exec-always --no-startup-id nm-applet
+exec-always /usr/libexec/gnome-settings-daemon
+exec_always --no-startup-id ~/.screenlayout/local.sh
 exec_always --no-startup-id feh --bg-center /home/stuart/wallpaper.jpg
 exec xautolock -time 60 -locker '/home/stuart/.config/i3/scripts/lock' &
 exec_always --no-startup-id ~/bin/natural_scrolling
