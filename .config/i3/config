@@ -1,7 +1,7 @@
 set $mod Mod1
 
 # font
-font pango: System San Francisco Display 14
+font pango:System San Francisco Display 6
 
 # thin borders
 hide_edge_borders both
@@ -149,6 +149,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
+  font pango:System San Francisco Display 14
   status_command i3blocks -c /home/stuart/.config/i3/i3blocks.conf
 	colors {
 		background $bg-color
@@ -172,17 +173,18 @@ bindsym XF86MonBrightnessUp exec --no-startup-id /home/stuart/.config/i3/scripts
 bindsym XF86MonBrightnessDown exec --no-startup-id /home/stuart/.config/i3/scripts/brightness-down
 
 bindsym $mod+Shift+f exec google-chrome-stable
-bindsym Print exec screenshot
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
+bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
+
+
 # startup
-exec-always --no-startup-id nm-applet
-exec-always /usr/libexec/gnome-settings-daemon
-exec_always --no-startup-id ~/.screenlayout/local.sh
+exec_always --no-startup-id ~/.screenlayout/auto.sh
+exec-always --no-startup-id /usr/bin/nm-applet &
+# exec-always /usr/libexec/gnome-settings-daemon
 exec_always --no-startup-id feh --bg-center /home/stuart/wallpaper.jpg
 exec xautolock -time 60 -locker '/home/stuart/.config/i3/scripts/lock' &
-exec_always --no-startup-id ~/bin/natural_scrolling
+exec_always --no-startup-id ~/.bin/natural_scrolling
 exec_always --no-startup-id setxkbmap -layout us
 exec_always --no-startup-id /bin/albert
-exec_always --no-startup-id xinput set-prop 13 324 1
 

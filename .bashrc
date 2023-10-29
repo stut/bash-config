@@ -122,13 +122,14 @@ hash bat 2>/dev/null && alias less=bat
 hash bat 2>/dev/null && alias cat=bat
 alias tmux="TERM=xterm-256color tmux"
 alias play="cvlc --play-and-exit"
+alias cc="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 # bring in local bashrc
 test -r ~/.bashrc_local &&
       . ~/.bashrc_local
 
 test -r /usr/local/go/bin/go && export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/code/go
+export GOPATH=$HOME/src/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
 
@@ -170,6 +171,10 @@ alias wsright="i3-msg move workspace to output right"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+PATH=~/src/go/src/github.com/stut/stut-cloud/bin:$PATH
+
+alias c="cd ~/src/go/src/github.com/stut/stut-cloud"
 
 export PATH=$(puniq $PATH)
 

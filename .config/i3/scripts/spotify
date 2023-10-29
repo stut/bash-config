@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 status=$(playerctl -p spotify status)
 artist=$(playerctl -p spotify metadata artist)
 #album=$(playerctl -p spotify metadata album)
 title=$(playerctl -p spotify metadata title)
-if [[ "$status" == "Playing" ]] ; then status="▶" ; else status="◼" ; fi
+if [[ "$status" -eq "Playing" ]] ; then status="▶" ; else status="◼" ; fi
 
 echo "[$status] $artist: $title"
