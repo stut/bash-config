@@ -1,6 +1,5 @@
 #!/bin/bash
-import -window root ~/Pictures/desktop.png
+grim ~/Pictures/desktop.png
 convert ~/Pictures/desktop.png -scale 5% -scale 2000% ~/Pictures/desktop.png
-#convert ~/Pictures/desktop.png -blur 0x8 ~/Pictures/desktop.png
-3mogrify -scale 10% -scale 1000% ~/Pictures/desktop.png
-i3lock -i ~/Pictures/desktop.png
+convert ~/Pictures/desktop.png -blur 0x8 ~/Pictures/desktop.png
+swaylock -i ~/Pictures/desktop.png

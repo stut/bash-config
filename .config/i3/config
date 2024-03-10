@@ -16,14 +16,14 @@ focus_follows_mouse no
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # REPLACED BY ALBERT - see the end of the file
-#bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec dmenu_run
 
 # lock
 bindsym $mod+l exec ~/.config/i3/scripts/lock
@@ -97,6 +97,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us
+    xkb_options caps:escape
+}
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -147,19 +152,7 @@ client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-col
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
-# bar
-bar {
-  font pango:System San Francisco Display 14
-  status_command i3blocks -c /home/stuart/.config/i3/i3blocks.conf
-	colors {
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
+bar swaybar_command waybar
 
 # key-bindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id /home/stuart/.config/i3/scripts/volume-up
@@ -177,14 +170,13 @@ bindsym $mod+Shift+f exec google-chrome-stable
 
 bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 
-
-# startup
 exec_always --no-startup-id ~/.screenlayout/auto.sh
-exec-always --no-startup-id /usr/bin/nm-applet &
+
+#exec-always --no-startup-id /usr/bin/nm-applet &
+exec picom &
 # exec-always /usr/libexec/gnome-settings-daemon
-exec_always --no-startup-id feh --bg-center /home/stuart/wallpaper.jpg
+exec_always --no-startup-id swaymsg output eDP-1 bg /home/stuart/wallpaper.jpg fit #111111
 exec xautolock -time 60 -locker '/home/stuart/.config/i3/scripts/lock' &
 exec_always --no-startup-id ~/.bin/natural_scrolling
-exec_always --no-startup-id setxkbmap -layout us
-exec_always --no-startup-id /bin/albert
+#exec_always --no-startup-id /bin/albert
 
